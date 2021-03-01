@@ -46,14 +46,16 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", "-e", "tmux", NULL };
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
-const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python", NULL };
+const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NULL };
 const char *spcmd4[] = {"anki", NULL };
+const char *spcmd5[] = {"zoom", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spmusic",    spcmd2},
 	{"sppy",    spcmd3},
 	{"anki",    spcmd4},
+	{"zoom",    spcmd5},
 };
 //}}}
 //{{{ DEFINE TAGS
@@ -79,6 +81,7 @@ static const Rule rules[] = {
 	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		1,			 1,			0,		 -1 },
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		1,			 1,			0,		 -1 },
 	{ NULL,		        "anki",		NULL,		          SPTAG(3),		1,			 0,			0,		 -1 },
+	{ NULL,		        "zoom",		NULL,		          SPTAG(4),		1,			 0,			0,		 -1 },
 };
 //}}}
 
@@ -230,6 +233,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_m,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 3 } },
+	{ MODKEY,            			XK_o,	   togglescratch,  {.ui = 4 } },
 
 	// TAGS
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
