@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 //{{{ GENERAL APPEARANCE
-static const unsigned int borderpx  =  1;        /* border pixel of windows */
+static const unsigned int borderpx  =  2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            =  1;        /* 0 means no bar */
 static const int topbar             =  1;        /* 0 means bottom bar */
@@ -47,15 +47,17 @@ typedef struct {
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", "-e", "tmux", NULL };
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
 const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NULL };
-const char *spcmd4[] = {"anki", NULL };
-const char *spcmd5[] = {"zoom", NULL };
+const char *spcmd4[] = {"st", "-n", "cal", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
+const char *spcmd5[] = {"anki", NULL };
+const char *spcmd6[] = {"zoom", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spmusic",    spcmd2},
 	{"sppy",    spcmd3},
-	{"anki",    spcmd4},
-	{"zoom",    spcmd5},
+	{"cal",    spcmd4},
+	{"anki",    spcmd5},
+	{"zoom",    spcmd6},
 };
 //}}}
 //{{{ DEFINE TAGS
@@ -80,8 +82,9 @@ static const Rule rules[] = {
 	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		1,			 1,			0,		 -1 },
 	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		1,			 1,			0,		 -1 },
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		1,			 1,			0,		 -1 },
-	{ NULL,		        "anki",		NULL,		          SPTAG(3),		1,			 0,			0,		 -1 },
-	{ NULL,		        "zoom",		NULL,		          SPTAG(4),		1,			 0,			0,		 -1 },
+	{ NULL,		        "cal",		NULL,		          SPTAG(3),		1,			 1,			0,		 -1 },
+	{ NULL,		        "anki",		NULL,		          SPTAG(4),		1,			 0,			0,		 -1 },
+	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		1,			 0,			0,		 -1 },
 };
 //}}}
 
@@ -92,6 +95,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
+#include <X11/XF86keysym.h>
+#define TERMINAL "st"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -147,10 +152,24 @@ static Key keys[] = {
     { MODKEY,                       XK_minus,  spawn,          SHCMD("smixer down 1") },
     { MODKEY|ShiftMask,             XK_minus,  spawn,          SHCMD("smixer down 5") },
 
+	{ 0, XF86XK_AudioMute,					   spawn,		SHCMD("smixer mute") },
+	{ 0, XF86XK_AudioRaiseVolume,			   spawn,		SHCMD("smixer up 1") },
+	{ ShiftMask, XF86XK_AudioRaiseVolume,	   spawn,		SHCMD("smixer up 5") },
+	{ 0, XF86XK_AudioLowerVolume,	           spawn,		SHCMD("smixer down 1") },
+	{ ShiftMask, XF86XK_AudioLowerVolume,	   spawn,		SHCMD("smixer down 5") },
+	{ 0, XF86XK_AudioMicMute,		           spawn,		SHCMD("smixer mic") },
+
 	// MUSIC CONTROL
     { MODKEY,                       XK_p,      spawn,          SHCMD("smixer pause") },
+	{ 0, XF86XK_AudioPause,					   spawn,		   SHCMD("smixer pause") },
     { MODKEY,                       XK_n,      spawn,          SHCMD("smixer next") },
+	{ 0, XF86XK_AudioNext,			           spawn,		   SHCMD("smixer next") },
     { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("smixer prev") },
+	{ 0, XF86XK_AudioPrev,			           spawn,		   SHCMD("smixer prev") },
+	{ 0, XF86XK_AudioPlay,		               spawn,	       SHCMD("smixer play") },
+	{ 0, XF86XK_AudioStop,		               spawn,	       SHCMD("smixer stop") },
+	{ 0, XF86XK_AudioRewind,	               spawn,	       SHCMD("mpc seek -10") },
+	{ 0, XF86XK_AudioForward,	               spawn,	       SHCMD("mpc seek +10") },
 
 	// MOUNT EXTERNALS
     { MODKEY,                       XK_F9,      spawn,         SHCMD("dmount -m") },
@@ -200,7 +219,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[6]} },
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[7]} },
-	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[8]} },
+	{ MODKEY|ShiftMask,             XK_z,      setlayout,      {.v = &layouts[8]} },
 	{ MODKEY|ShiftMask,             XK_Tab,    setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
@@ -232,9 +251,15 @@ static Key keys[] = {
 	{ MODKEY,            			XK_space,  togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_m,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } },
-	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 3 } },
-	{ MODKEY,            			XK_o,	   togglescratch,  {.ui = 4 } },
+	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } },
+	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 4 } },
+	{ MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } },
 
+	// MISC
+	{ 0, XF86XK_WWW,				spawn,		SHCMD("$BROWSER") },
+	{ 0, XF86XK_DOS,				spawn,		SHCMD(TERMINAL) },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("brightnessctl set +2%") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 2%-") },
 	// TAGS
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -249,6 +274,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
+
 };
 
 /* button definitions */
