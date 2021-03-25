@@ -208,7 +208,9 @@ static Key keys[] = {
 	// SYSTEM
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("dpowermenu") },
+	{ MODKEY,						XK_x,      spawn,          SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
+    { MODKEY,                       XK_F3,      spawn,         SHCMD("displayselect") },
 
 	// LAYOUTS
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
