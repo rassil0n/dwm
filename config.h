@@ -71,20 +71,21 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 
-	/* class            instance    title             tags mask     isfloating   isterminal noswallow	monitor */
-	{ "Gimp",           NULL,       NULL,                 0,            1,           0,         0,       -1 },
-	{ "st",             NULL,       NULL,                 0,            0,           1,         1,       -1 },
-	{ NULL,             NULL,       "(nvim)",             0,            0,           0,         1,       -1 },
-	{ "ksnip",          NULL,       NULL,                 0,            1,           0,         0,       -1 },
-	{ NULL,             NULL,       "mpd-art-box",        0,            1,           0,         0,       -1 },
-	{ NULL,             NULL,       "musicscratch",       0,            1,           0,         0,       -1 },
-	{ NULL,             NULL,       "puddletag",          0,            1,           0,         0,       -1 },
-	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		1,			 1,			0,		 -1 },
-	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		1,			 1,			0,		 -1 },
-	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		1,			 1,			0,		 -1 },
-	{ NULL,		        "cal",		NULL,		          SPTAG(3),		1,			 1,			0,		 -1 },
-	{ NULL,		        "anki",		NULL,		          SPTAG(4),		1,			 0,			0,		 -1 },
-	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		1,			 0,			0,		 -1 },
+	/* class            instance    title             tags mask     iscentered isfloating   isterminal noswallow	monitor */
+	{ "Gimp",           NULL,       NULL,                 0,            0, 1,           0,         0,       -1 },
+	{ "amenu",			0,			0,					  0,            1, 1,           0,         0,       -1 },
+	{ "st",             NULL,       NULL,                 0,            0, 0,           1,         1,       -1 },
+	{ NULL,             NULL,       "(nvim)",             0,            0, 0,           0,         1,       -1 },
+	{ "ksnip",          NULL,       NULL,                 0,            0, 1,           0,         0,       -1 },
+	{ NULL,             NULL,       "mpd-art-box",        0,            0, 1,           0,         0,       -1 },
+	{ NULL,             NULL,       "musicscratch",       0,            0, 1,           0,         0,       -1 },
+	{ NULL,             NULL,       "puddletag",          0,            0, 1,           0,         0,       -1 },
+	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "cal",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "anki",		NULL,		          SPTAG(4),		0, 1,			 0,			0,		 -1 },
+	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 },
 };
 //}}}
 
@@ -133,7 +134,8 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	/* { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, */
+	{ MODKEY,						XK_d,      spawn,          SHCMD("amenu -l") },
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
 
 	// DMENU PROGRAMS
@@ -207,7 +209,7 @@ static Key keys[] = {
 
 	// SYSTEM
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("dpowermenu") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("apowermenu") },
 	{ MODKEY,						XK_x,      spawn,          SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
     { MODKEY,                       XK_F3,      spawn,         SHCMD("displayselect") },
