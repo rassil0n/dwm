@@ -212,7 +212,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("apowermenu") },
 	{ MODKEY,						XK_x,      spawn,          SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
-    { MODKEY,                       XK_F3,      spawn,         SHCMD("displayselect") },
+    { MODKEY,                       XK_F3,     spawn,         SHCMD("displayselect") },
+    { 0,							XK_Print,  spawn,         SHCMD("flameshot gui") },
+    { MODKEY,						XK_Print,  spawn,         SHCMD("flameshot full -p $HOME") },
 
 	// LAYOUTS
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
