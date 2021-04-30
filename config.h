@@ -55,7 +55,7 @@ static Sp scratchpads[] = {
 	{"spterm",      spcmd1},
 	{"spmusic",    spcmd2},
 	{"sppy",    spcmd3},
-	{"cal",    spcmd4},
+	{"calcurse",    spcmd4},
 	{"anki",    spcmd5},
 	{"zoom",    spcmd6},
 };
@@ -83,7 +83,7 @@ static const Rule rules[] = {
 	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		0, 1,			 1,			0,		 -1 },
-	{ NULL,		        "cal",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "calcurse",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "anki",		NULL,		          SPTAG(4),		0, 1,			 0,			0,		 -1 },
 	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 },
 };
@@ -140,7 +140,7 @@ static Key keys[] = {
 
 	// DMENU PROGRAMS
 	{ MODKEY|ControlMask,           XK_u,      spawn,          SHCMD("dunicode") },
-	{ MODKEY|ControlMask,           XK_o,      spawn,          SHCMD("dfileopen") },
+	{ MODKEY|ControlMask,           XK_o,      spawn,          SHCMD("afileopen") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("dwebsearch") },
 	{ MODKEY|ControlMask,           XK_t,      spawn,          SHCMD("dtodo") },
 	{ MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("dnotes") },
