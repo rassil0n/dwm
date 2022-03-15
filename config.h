@@ -31,7 +31,8 @@ static const char foreground[]      ="#eceff4";	// nord6
 static const char myNormBorder[]    ="#3b4252";	// nord1
 static const char myActive[]        ="#5E81AC";	// nord10
 static const char myBlack[]         ="#2e3440";	// nord0
-static const char myActiveBorder[]  ="#D8DEE9"; // nord4
+/* static const char myActiveBorder[]  ="#D8DEE9"; // nord4 */
+static const char myActiveBorder[]  ="#D08770"; // nord12
 static const char *colors[][3]      = {
 
 	/*               fg          bg        border   */
@@ -47,9 +48,9 @@ typedef struct {
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", "-e", "tmux", NULL };
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
 const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NULL };
-const char *spcmd4[] = {"st", "-n", "cal", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
+const char *spcmd4[] = {"st", "-n", "calendar", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
 const char *spcmd5[] = {"anki", NULL };
-const char *spcmd6[] = {"zoom", NULL };
+/* const char *spcmd6[] = {"zoom", NULL }; */
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -57,7 +58,7 @@ static Sp scratchpads[] = {
 	{"sppy",    spcmd3},
 	{"calcurse",    spcmd4},
 	{"anki",    spcmd5},
-	{"zoom",    spcmd6},
+	/* {"zoom",    spcmd6}, */
 };
 //}}}
 //{{{ DEFINE TAGS
@@ -83,7 +84,7 @@ static const Rule rules[] = {
 	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		0, 1,			 1,			0,		 -1 },
-	{ NULL,		        "calcurse",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "calendar",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "anki",		NULL,		          SPTAG(4),		0, 1,			 0,			0,		 -1 },
 	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 },
 };
@@ -137,6 +138,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, */
 	{ MODKEY,						XK_d,      spawn,          SHCMD("amenu -l") },
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_m,      spawn,          SHCMD("st -e $HOME/.local/bin/lf/lf") },
 
 	// DMENU PROGRAMS
 	{ MODKEY|ControlMask,           XK_u,      spawn,          SHCMD("dunicode") },
