@@ -138,7 +138,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, */
 	{ MODKEY,						XK_d,      spawn,          SHCMD("amenu -l") },
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_m,      spawn,          SHCMD("st -e $HOME/.local/bin/lf/lf") },
+    { MODKEY,                       XK_o,      spawn,          SHCMD("st -e $HOME/.local/bin/lf/lf") },
 
 	// DMENU PROGRAMS
 	{ MODKEY|ControlMask,           XK_u,      spawn,          SHCMD("dunicode") },
