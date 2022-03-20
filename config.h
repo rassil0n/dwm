@@ -261,7 +261,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } },
 	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 4 } },
-	{ MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } },
+	/* { MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } }, */
 
 	// MISC
 	{ 0, XF86XK_WWW,				spawn,		SHCMD("$BROWSER") },
