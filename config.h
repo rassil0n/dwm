@@ -86,7 +86,7 @@ static const Rule rules[] = {
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "calendar",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "anki",		NULL,		          SPTAG(4),		0, 1,			 0,			0,		 -1 },
-	{ NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 },
+	/* { NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 }, */
 };
 //}}}
 
@@ -147,6 +147,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_t,      spawn,          SHCMD("dtodo") },
 	{ MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("dnotes") },
 	{ MODKEY|ControlMask,           XK_d,      spawn,          SHCMD("dswitch") },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("dpass") },
 
 	// VOLUME CONTROL
     { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("smixer mute") },
