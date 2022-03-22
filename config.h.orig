@@ -135,10 +135,10 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	/* { MODKEY,						XK_d,      spawn,          SHCMD("amenu -l") }, */
+	/* { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, */
+	{ MODKEY,						XK_d,      spawn,          SHCMD("amenu -l") },
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_o,      spawn,          SHCMD("st -e $HOME/.local/bin/lf/lf") },
+    { MODKEY,                       XK_m,      spawn,          SHCMD("st -e $HOME/.local/bin/lf/lf") },
 
 	// DMENU PROGRAMS
 	{ MODKEY|ControlMask,           XK_u,      spawn,          SHCMD("dunicode") },
@@ -211,7 +211,7 @@ static Key keys[] = {
 
 	// SYSTEM
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("dpowermenu") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("apowermenu") },
 	{ MODKEY,						XK_x,      spawn,          SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
     { MODKEY,                       XK_F3,     spawn,         SHCMD("displayselect") },
@@ -261,7 +261,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } },
 	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 4 } },
-	/* { MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } }, */
+	{ MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } },
 
 	// MISC
 	{ 0, XF86XK_WWW,				spawn,		SHCMD("$BROWSER") },
