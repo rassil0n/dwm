@@ -51,14 +51,14 @@ const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NUL
 const char *spcmd4[] = {"st", "-n", "calendar", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
 const char *spcmd5[] = {"anki", NULL };
 const char *spcmd6[] = {"zoom", NULL };
-const char *spcmd7[] = {"st", "-n", "spncspot", "-g", "144x41", "-e", "ncspot", NULL };
+const char *spcmd7[] = {"st", "-n", "spncspot", "-g", "144x41", "-e", "ncspot-start", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",       spcmd1},
 	{"spmusic",      spcmd2},
 	{"sppy",         spcmd3},
-	{"anki",         spcmd5},
 	{"calcurse",     spcmd4},
+	{"anki",         spcmd5},
 	{"zoom",         spcmd6},
 	{"ncspot",       spcmd7},
 };
