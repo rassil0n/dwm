@@ -50,15 +50,17 @@ const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", 
 const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NULL };
 const char *spcmd4[] = {"st", "-n", "calendar", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
 const char *spcmd5[] = {"anki", NULL };
-/* const char *spcmd6[] = {"zoom", NULL }; */
+const char *spcmd6[] = {"zoom", NULL };
+const char *spcmd7[] = {"st", "-n", "spncspot", "-g", "144x41", "-e", "ncspot", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"spmusic",    spcmd2},
-	{"sppy",    spcmd3},
-	{"calcurse",    spcmd4},
-	{"anki",    spcmd5},
-	/* {"zoom",    spcmd6}, */
+	{"spterm",       spcmd1},
+	{"spmusic",      spcmd2},
+	{"sppy",         spcmd3},
+	{"anki",         spcmd5},
+	{"calcurse",     spcmd4},
+	{"zoom",         spcmd6},
+	{"ncspot",       spcmd7},
 };
 //}}}
 //{{{ DEFINE TAGS
@@ -84,9 +86,10 @@ static const Rule rules[] = {
 	{ NULL,		        "spterm",	NULL,		          SPTAG(0),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "spmusic",	NULL,		          SPTAG(1),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "sppy",		NULL,		          SPTAG(2),		0, 1,			 1,			0,		 -1 },
-	{ NULL,		        "calendar",		NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
+	{ NULL,		        "calendar",	NULL,		          SPTAG(3),		0, 1,			 1,			0,		 -1 },
 	{ NULL,		        "anki",		NULL,		          SPTAG(4),		0, 1,			 0,			0,		 -1 },
 	/* { NULL,		        "zoom",		NULL,		          SPTAG(5),		0, 1,			 0,			0,		 -1 }, */
+	{ NULL,		        "spncspot", NULL,		          SPTAG(6),		0, 1,			 0,			0,		 -1 },
 };
 //}}}
 
@@ -217,6 +220,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_x,      spawn,          SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
     { MODKEY,                       XK_F3,     spawn,         SHCMD("displayselect") },
+    { MODKEY,                       XK_Home,   spawn,         SHCMD("kbtoggle") },
     { 0,							XK_Print,  spawn,         SHCMD("flameshot gui") },
     { MODKEY,						XK_Print,  spawn,         SHCMD("flameshot full -p $HOME") },
 
@@ -258,12 +262,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	// SCRATCHPADS
-	{ MODKEY,            			XK_space,  togglescratch,  {.ui = 0 } },
-	{ MODKEY,            			XK_m,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } },
-	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } },
-	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 4 } },
-	/* { MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } }, */
+	{ MODKEY,            			XK_space,  togglescratch,  {.ui = 0 } }, // term
+	{ MODKEY,            			XK_m,	   togglescratch,  {.ui = 1 } }, // ncmpcpp
+	{ MODKEY,            			XK_y,	   togglescratch,  {.ui = 2 } }, // python
+	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } }, // calcurse
+	{ MODKEY,            			XK_a,	   togglescratch,  {.ui = 4 } }, // anki
+	/* { MODKEY,            			XK_o,	   togglescratch,  {.ui = 5 } }, // zoom*/
+	{ MODKEY,            			XK_s,	   togglescratch,  {.ui = 6 } }, // ncspot
 
 	// MISC
 	{ 0, XF86XK_WWW,				spawn,		SHCMD("$BROWSER") },
@@ -271,7 +276,7 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("brightnessctl set +2%") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 2%-") },
 	// TAGS
-	{ MODKEY,                       XK_s,      togglesticky,   {0} },
+	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
