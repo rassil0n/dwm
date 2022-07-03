@@ -153,6 +153,7 @@ static Key keys[] = {
     { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("dbookmarks") },
     { MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("dpass") },
     { MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("dtranslate") },
+    { MODKEY|ControlMask,           XK_k,      spawn,          SHCMD("dkill") },
 
     // VOLUME CONTROL
     { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("smixer mute") },
