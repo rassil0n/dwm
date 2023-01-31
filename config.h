@@ -49,7 +49,7 @@ const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", "-e", "tmux", NULL
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
 const char *spcmd3[] = {"st", "-n", "sppy", "-g", "144x41", "-e", "python3", NULL };
 const char *spcmd4[] = {"st", "-n", "calendar", "-g", "144x41", "-e", "calcurse", "-D", ".config/calcurse",NULL };
-const char *spcmd5[] = {"anki", NULL };
+const char *spcmd5[] = {"keepasscx", NULL };
 const char *spcmd6[] = {"zoom", NULL };
 const char *spcmd7[] = {"st", "-n", "spncspot", "-g", "144x41", "-e", "ncspot-start", NULL };
 static Sp scratchpads[] = {
@@ -58,7 +58,7 @@ static Sp scratchpads[] = {
     {"spmusic",      spcmd2},
     {"sppy",         spcmd3},
     {"calcurse",     spcmd4},
-    {"anki",         spcmd5},
+    {"keepasscx",    spcmd5},
     {"zoom",         spcmd6},
     {"ncspot",       spcmd7},
 };
@@ -87,7 +87,7 @@ static const Rule rules[] = {
     { NULL,             "spmusic",    NULL,                 SPTAG(1),     0,         1,           1,         0,       -1 },
     { NULL,             "sppy",       NULL,                 SPTAG(2),     0,         1,           1,         0,       -1 },
     { NULL,             "calendar",   NULL,                 SPTAG(3),     0,         1,           1,         0,       -1 },
-    { NULL,             "anki",       NULL,                 SPTAG(4),     0,         1,           0,         0,       -1 },
+    { NULL,             "keepasscx",  NULL,                 SPTAG(4),     0,         1,           0,         0,       -1 },
     /* { NULL,              "zoom",      NULL,                 SPTAG(5),     0,         1,           0,         0,       -1 }, */
     { NULL,             "spncspot",   NULL,                 SPTAG(6),     0,         1,           0,         0,       -1 },
 };
@@ -270,7 +270,7 @@ static Key keys[] = {
     { MODKEY,                       XK_m,      togglescratch,  {.ui = 1 } }, // ncmpcpp
     { MODKEY,                       XK_y,      togglescratch,  {.ui = 2 } }, // python
     { MODKEY,                       XK_c,      togglescratch,  {.ui = 3 } }, // calcurse
-    { MODKEY,                       XK_a,      togglescratch,  {.ui = 4 } }, // anki
+    { MODKEY,                       XK_a,      togglescratch,  {.ui = 4 } }, // keepasscx
     /* { MODKEY,                        XK_o,      togglescratch,  {.ui = 5 } }, // zoom*/
     { MODKEY,                       XK_s,      togglescratch,  {.ui = 6 } }, // ncspot
 
