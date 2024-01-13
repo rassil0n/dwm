@@ -222,7 +222,7 @@ static Key keys[] = {
     { MODKEY,                       XK_x,      spawn,          SHCMD("slock") },
     { MODKEY|ShiftMask,             XK_F4,     quit,           {0} },
     { MODKEY,                       XK_F3,     spawn,         SHCMD("displayselect") },
-    { MODKEY,                       XK_F10,   spawn,         SHCMD("kbtoggle") },
+    { MODKEY,                       XK_F8,   spawn,         SHCMD("kbtoggle") },
     { MODKEY,                       XK_Home,   spawn,         SHCMD("kbtoggle") },
     { 0,                            XK_Print,  spawn,         SHCMD("flameshot gui") },
     { MODKEY,                       XK_Print,  spawn,         SHCMD("flameshot full -p $HOME") },
